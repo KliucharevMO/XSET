@@ -8,17 +8,17 @@ for %%i in (%SERVICES%) do (
     echo Checking if %%i is installed...
     sc query "%%i" >nul 2>nul
     if %errorlevel% equ 0 (
-        echo The service is installed.
+        echo The service %%i is installed..
         sc query "%%i" | find "RUNNING" >nul 2>nul
         if %errorlevel% equ 0 (
-            echo The service is running.
+            echo The service %%i is running.
             echo %date% %time% - %%i is installed and running. >> %LOG_FILE%
         ) else (
-            echo The service is installed but not running.
+            echo The service %%i is installed but not running.
             echo %date% %time% - %%i is installed but not running. >> %LOG_FILE%
         )
     ) else (
-        echo The service is not installed.
+        echo The service %%i is not installed.
         echo %date% %time% - %%i is not installed. >> %LOG_FILE%
     )
 )
